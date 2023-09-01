@@ -6,11 +6,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
-import Pagination from '@mui/material/Pagination';
+
 
 const MainContent = () => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 20;
+  const [currentPage, setCurrentPage] = useState(2);
+  const itemsPerPage = 15;
   const all = useSelector(allData);
   const handlePageClick = (selected) => {
     setCurrentPage(selected.selected);

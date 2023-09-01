@@ -17,24 +17,28 @@ import Theaters from "./fragments/Theaters";
 import Standups from "./fragments/Standups";
 import FavEvents from "./fragments/FavEvents";
 import MainContent from "./fragments/MainContent";
+import { setAllData } from "./features/DataSlice";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get("http://localhost:3000/concerts/").then((res) => {
-      dispatch(setConcerts(res.data));
+    axios.get("/db.json").then((res) => {
+      dispatch(setConcerts(res.data.concerts));
     });
 
-    axios.get("http://localhost:3000/theaters/").then((res) => {
-      dispatch(setTheaters(res.data));
+    axios.get("/db.json").then((res) => {
+      dispatch(setTheaters(res.data.theaters));
     });
 
-    axios.get("http://localhost:3000/festivals/").then((res) => {
-      dispatch(setFestivals(res.data));
+    axios.get("/db.json").then((res) => {
+      dispatch(setFestivals(res.data.festivals));
     });
 
-    axios.get("http://localhost:3000/standups/").then((res) => {
-      dispatch(setStandups(res.data));
+    axios.get("/db.json").then((res) => {
+      dispatch(setStandups(res.data.standups));
+    });
+    axios.get("/db.json").then((res) => {
+      dispatch(setAllData(res.data));
     });
   }, []);
 
