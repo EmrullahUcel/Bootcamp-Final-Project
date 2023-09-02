@@ -17,7 +17,6 @@ import Theaters from "./fragments/Theaters";
 import Standups from "./fragments/Standups";
 import FavEvents from "./fragments/FavEvents";
 import MainContent from "./fragments/MainContent";
-import { setAllData } from "./features/DataSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,9 +35,6 @@ function App() {
 
     axios.get("/db.json").then((res) => {
       dispatch(setStandups(res.data.standups));
-    });
-    axios.get("/db.json").then((res) => {
-      dispatch(setAllData(res.data));
     });
   }, []);
 

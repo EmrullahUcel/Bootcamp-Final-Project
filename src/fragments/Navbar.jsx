@@ -8,17 +8,29 @@ import { FaLaughBeam } from "react-icons/fa";
 
 const Navbar = () => {
   const concerts = useSelector((state) => state.data.concerts);
+  const festivals = useSelector((state) => state.data.festivals);
+  const standups = useSelector((state) => state.data.standups);
+  const theaters = useSelector((state) => state.data.theaters);
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {
     const searchValue = e.target.value;
     dispatch(setSearchTerm(searchValue));
 
-    const filteredConcerts = concerts.filter((concert) =>
-      concert.city.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    const allEvents = [...concerts, ...festivals, ...standups, ...theaters];
 
-    dispatch(setSearhedItems(filteredConcerts));
+    const filtered = allEvents.filter((event) => {
+      const normalizedSearchValue = searchValue.toLowerCase();
+      return (
+        event.city.toLowerCase().includes(normalizedSearchValue) ||
+        event.artist?.toLowerCase().includes(normalizedSearchValue) ||
+        event.location.toLowerCase().includes(normalizedSearchValue) ||
+        event.title?.toLowerCase().includes(normalizedSearchValue) ||
+        event.date.toLowerCase().includes(normalizedSearchValue)
+      );
+    });
+
+    dispatch(setSearhedItems(filtered));
   };
 
   return (
@@ -31,7 +43,7 @@ const Navbar = () => {
           className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 font-semibold "
           onChange={handleSearch}
           type="search"
-          placeholder="Etkinlik , sanatçı ya da mekan ara ..."
+          placeholder="Etkinlik , sanatçı , mekan ya da tarihe göre ara ..."
         />
         <select
           className="w-[18rem] h-16 rounded-s-full rounded-e-full p-5"

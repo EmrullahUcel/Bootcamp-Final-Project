@@ -7,7 +7,6 @@ const initialState = {
   standups: [],
   searchTerm: "",
   searhedItems: [],
-  allData: [],
 };
 
 export const dataSlice = createSlice({
@@ -32,9 +31,6 @@ export const dataSlice = createSlice({
     setSearhedItems: (state, action) => {
       state.searhedItems = action.payload;
     },
-    setAllData: (state, action) => {
-      state.allData = action.payload;
-    },
   },
 });
 
@@ -45,6 +41,5 @@ export const {
   setTheaters,
   setSearchTerm,
   setSearhedItems,
-  setAllData,
 } = dataSlice.actions;
 export default dataSlice.reducer;
