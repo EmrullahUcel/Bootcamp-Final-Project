@@ -5,17 +5,29 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import SearchedEvents from "./SearchedEvents";
+import ReactPaginate from "react-paginate";
+import { useState } from "react";
 const Standups = () => {
   const standups = useSelector((state) => state.data.standups);
   const searchTerm = useSelector((state) => state.data.searchTerm);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 15;
+  const handlePageClick = (selected) => {
+    setCurrentPage(selected.selected);
+  };
+  const pageCount = Math.ceil(standups.length / itemsPerPage);
+  const currentItems = standups.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
   return (
     <>
       {searchTerm ? (
         <SearchedEvents />
       ) : (
         <AnimatePresence>
-          <div className="w-full mt-14 flex flex-wrap gap-12 justify-center px-16 ">
-            {standups.map((standup) => {
+          <div className="w-full mt-36 flex flex-wrap gap-12 justify-center px-16 ">
+            {currentItems.map((standup) => {
               return (
                 <motion.div
                   initial="initial"
@@ -58,6 +70,14 @@ const Standups = () => {
               );
             })}
           </div>
+          <ReactPaginate
+            className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
+            previousLabel={"Önceki"}
+            nextLabel={"Sonraki"}
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            activeClassName={"active2"}
+          />
         </AnimatePresence>
       )}
     </>

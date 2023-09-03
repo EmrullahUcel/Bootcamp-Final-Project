@@ -20,7 +20,7 @@ const FavEvents = () => {
   };
   return (
     <AnimatePresence>
-      <motion.div className="w-full h-72 overflow-hidden relative z-9">
+      <motion.div className="w-full h-72 overflow-hidden relative ">
         <motion.div
           initial="initial"
           animate="animate"

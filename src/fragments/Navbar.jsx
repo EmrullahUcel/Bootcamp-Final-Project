@@ -32,30 +32,37 @@ const Navbar = () => {
 
     dispatch(setSearhedItems(filtered));
   };
+  const handleDate = (e) => {
+    const searchValue = e.target.value;
+    dispatch(setSearchTerm(searchValue));
+    const allEvents = [...concerts, ...festivals, ...standups, ...theaters];
+    console.log(searchValue);
+    const filtered = allEvents.filter((event) => {
+      return event.date.includes(searchValue);
+    });
+
+    dispatch(setSearhedItems(filtered));
+  };
 
   return (
     <nav className="bg-[#3DCE88] flex justify-center items-center w-full h-44 relative">
       <NavLink to="/" className="w-32 mt-[-90px]">
         ETKİNLİKLER.COM
       </NavLink>
-      <div className="w-full flex justify-around items-end absolute mb-[-180px] z-30">
+      <div className="w-full flex justify-around items-end absolute mb-[-7rem] ">
         <input
           className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 font-semibold "
           onChange={handleSearch}
           type="search"
           placeholder="Etkinlik , sanatçı , mekan ya da tarihe göre ara ..."
         />
-        <select
+        <input
+          type="date"
           className="w-[18rem] h-16 rounded-s-full rounded-e-full p-5"
-          name=""
-          id=""
-        >
-          <option value="">İstanbul</option>
-          <option value="">İzmir</option>
-          <option value="">Ankara</option>
-        </select>
+          onChange={handleDate}
+        />
       </div>
-      <div className="w-full  mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-20rem] z-10 ">
+      <div className="w-full  mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-25rem]  ">
         <NavLink
           className="w-40 h-20  hover:border-green-600 border-4 border-white flex
            justify-center items-center rounded-lg bg-white text-black "

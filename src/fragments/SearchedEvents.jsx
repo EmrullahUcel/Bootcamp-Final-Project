@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import theaterNoImage from '/public/theaterNoImage.jpg'
 
 const SearchedEvents = () => {
   const searhedItems = useSelector((state) => state.data.searhedItems);
@@ -22,7 +23,7 @@ const SearchedEvents = () => {
               key={event.id}
               className="flex flex-col w-[280px] h-[400px] bg-white rounded-3xl relative  items-center text-left leading-10 "
             >
-              <img className="w-full h-44 rounded-t-3xl " src={event.image} />
+              <img className="w-full h-44 rounded-t-3xl " src={event.image ? event.image : theaterNoImage} />
 
               <div className="flex justify-center w-full text-center">
                 <h1 className="w-56 truncate font-bold text-xl ">
@@ -51,6 +52,7 @@ const SearchedEvents = () => {
           );
         })}
       </div>
+      
     </AnimatePresence>
   );
 };

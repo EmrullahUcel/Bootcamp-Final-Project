@@ -5,15 +5,15 @@ import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import ReactPaginate from "react-paginate";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchedEvents from "./SearchedEvents";
 
 const MainContent = () => {
   const searchTerm = useSelector((state) => state.data.searchTerm);
 
+  const all = useSelector(allData);
   const [currentPage, setCurrentPage] = useState(9);
   const itemsPerPage = 15;
-  const all = useSelector(allData);
   const handlePageClick = (selected) => {
     setCurrentPage(selected.selected);
   };

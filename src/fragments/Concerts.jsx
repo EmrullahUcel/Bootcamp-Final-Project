@@ -6,17 +6,35 @@ import { motion, AnimatePresence } from "framer-motion";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import SearchedEvents from "./SearchedEvents";
 import ConcertTicket from "./modals/ConcertTicket";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { useDispatch } from "react-redux";
+import { setTicket  } from "/src/features/DataSlice";
 
 const Concerts = () => {
   const searchTerm = useSelector((state) => state.data.searchTerm);
   const concerts = useSelector((state) => state.data.concerts);
+ 
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const openModal = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 15;
+  const dispatch = useDispatch();
+  
+
+  const handlePageClick = (selected) => {
+    setCurrentPage(selected.selected);
+  };
+  const pageCount = Math.ceil(concerts.length / itemsPerPage);
+  const currentItems = concerts.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
+  const openModal = (concert) => {
     setIsOpen(true);
+    dispatch(setTicket(concert));
   };
   function closeModal() {
     setIsOpen(false);
-    
   }
   return (
     <>
@@ -24,8 +42,8 @@ const Concerts = () => {
         <SearchedEvents />
       ) : (
         <AnimatePresence>
-          <div className="w-full mt-14 flex flex-wrap gap-12 justify-center px-16 bg-[#f1f1f177] ">
-            {concerts.map((concert) => {
+          <div className="w-full mt-36 flex flex-wrap gap-12 justify-center px-16 bg-[#f1f1f177] ">
+            {currentItems.map((concert) => {
               return (
                 <motion.div
                   initial="initial"
@@ -61,7 +79,7 @@ const Concerts = () => {
                     </p>
                   </div>
                   <button
-                    onClick={() => openModal()}
+                    onClick={() => openModal(concert)}
                     className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300"
                   >
                     Bilet al
@@ -72,6 +90,14 @@ const Concerts = () => {
             })}
             <ConcertTicket modalIsOpen={modalIsOpen} closeModal={closeModal} />
           </div>
+          <ReactPaginate
+            className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
+            previousLabel={"Önceki"}
+            nextLabel={"Sonraki"}
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            activeClassName={"active2"}
+          />
         </AnimatePresence>
       )}
     </>

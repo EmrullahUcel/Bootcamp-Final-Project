@@ -5,18 +5,31 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import SearchedEvents from "./SearchedEvents";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
 
 const Festivals = () => {
   const searchTerm = useSelector((state) => state.data.searchTerm);
   const festivals = useSelector((state) => state.data.festivals);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 15;
+  const handlePageClick = (selected) => {
+    setCurrentPage(selected.selected);
+  };
+  const pageCount = Math.ceil(festivals.length / itemsPerPage);
+  const currentItems = festivals.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
+
   return (
     <>
       {searchTerm ? (
         <SearchedEvents />
       ) : (
         <AnimatePresence>
-          <div className="w-full mt-14 flex flex-wrap gap-12 justify-center px-16 ">
-            {festivals.map((festival) => {
+          <div className="w-full mt-36  flex flex-wrap gap-12 justify-center px-16 ">
+            {currentItems.map((festival) => {
               return (
                 <motion.div
                   initial="initial"
@@ -59,6 +72,14 @@ const Festivals = () => {
               );
             })}
           </div>
+          <ReactPaginate
+            className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
+            previousLabel={"Önceki"}
+            nextLabel={"Sonraki"}
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            activeClassName={"active2"}
+          />
         </AnimatePresence>
       )}
     </>
