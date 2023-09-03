@@ -8,10 +8,15 @@ import cartVariants from "/src/components/variants/cartVariants.js";
 import SearchedEvents from "./SearchedEvents";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+import Ticket from "./modals/Ticket";
+import Map from "./modals/Map";
 
 const Theaters = () => {
   const theaters = useSelector((state) => state.data.theaters);
   const searchTerm = useSelector((state) => state.data.searchTerm);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [mapIsOpen, setMapIsOpen] = useState(false);
+  const [event, setEvent] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 15;
   const handlePageClick = (selected) => {
@@ -22,6 +27,21 @@ const Theaters = () => {
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const handleEvent = (theater) => {
+    setEvent(theater);
+  };
+  const openMap = () => {
+    setMapIsOpen(true);
+  };
+  const closeMap = () => {
+    setMapIsOpen(false);
+  };
   return (
     <>
       {searchTerm ? (
@@ -45,7 +65,13 @@ const Theaters = () => {
                     src={theater.image ? theater.image : theaterNoImage}
                   />
 
-                  <div className="flex justify-center w-full text-center">
+                  <div
+                    onClick={() => {
+                      openMap();
+                      handleEvent(theater);
+                    }}
+                    className="flex justify-center w-full text-center hover:text-red-400 cursor-pointer"
+                  >
                     <h1 className="w-56 truncate font-bold text-xl ">
                       {theater.title}
                     </h1>
@@ -53,7 +79,7 @@ const Theaters = () => {
                   <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                     <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
                     <p className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg">
-                      {theater.location}
+                      {theater.locationName}
                     </p>
                   </div>
                   <div className="mt-3">
@@ -64,14 +90,30 @@ const Theaters = () => {
                       Saat : {theater.time}
                     </p>
                   </div>
-                  <button className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300">
+                  <button
+                    onClick={() => {
+                      openModal();
+                      handleEvent(theater);
+                    }}
+                    className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300"
+                  >
                     Bilet al
                     <AiOutlineShoppingCart className="text-blue-600" />
                   </button>
+                  <Map
+                    mapIsOpen={mapIsOpen}
+                    closeMap={closeMap}
+                    event={event}
+                  />
                 </motion.div>
               );
             })}
           </div>
+          <Ticket
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+            event={event}
+          />
           <ReactPaginate
             className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
             previousLabel={"Önceki"}

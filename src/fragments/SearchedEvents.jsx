@@ -4,14 +4,23 @@ import { AnimatePresence, motion } from "framer-motion";
 import cartVariants from "/src/components/variants/cartVariants.js";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import theaterNoImage from '/public/theaterNoImage.jpg'
+import theaterNoImage from "/public/theaterNoImage.jpg";
+import { useState } from "react";
+import Map from "./modals/Map";
 
 const SearchedEvents = () => {
+  const [mapIsOpen, setMapIsOpen] = useState(false);
   const searhedItems = useSelector((state) => state.data.searhedItems);
+  const openMap = () => {
+    setMapIsOpen(true);
+  };
+  const closeMap = () => {
+    setMapIsOpen(false);
+  };
 
   return (
     <AnimatePresence>
-      <div className="w-full mt-14 flex flex-wrap gap-12 justify-center px-16 ">
+      <div className="w-full mt-36 flex flex-wrap gap-12 justify-center px-16 ">
         {searhedItems.map((event) => {
           return (
             <motion.div
@@ -23,17 +32,26 @@ const SearchedEvents = () => {
               key={event.id}
               className="flex flex-col w-[280px] h-[400px] bg-white rounded-3xl relative  items-center text-left leading-10 "
             >
-              <img className="w-full h-44 rounded-t-3xl " src={event.image ? event.image : theaterNoImage} />
+              <img
+                className="w-full h-44 rounded-t-3xl "
+                src={event.image ? event.image : theaterNoImage}
+              />
 
-              <div className="flex justify-center w-full text-center">
-                <h1 className="w-56 truncate font-bold text-xl ">
+              <div
+                onClick={() => {
+                  openMap();
+                  handleEvent(event);
+                }}
+                className="flex justify-center w-full text-center"
+              >
+                <h1 className="w-56 truncate font-bold text-xl hover:text-red-500 cursor-pointer ">
                   {event.artist}
                 </h1>
               </div>
               <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                 <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
                 <p className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg">
-                  {event.location}
+                  {event.locationName}
                 </p>
               </div>
               <div className="mt-3">
@@ -48,11 +66,11 @@ const SearchedEvents = () => {
                 Bilet al
                 <AiOutlineShoppingCart className="text-blue-600" />
               </button>
+              <Map mapIsOpen={mapIsOpen} closeMap={closeMap} event={event} />
             </motion.div>
           );
         })}
       </div>
-      
     </AnimatePresence>
   );
 };

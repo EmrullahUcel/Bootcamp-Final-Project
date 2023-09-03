@@ -7,10 +7,16 @@ import cartVariants from "/src/components/variants/cartVariants.js";
 import SearchedEvents from "./SearchedEvents";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+import Ticket from "./modals/Ticket";
+import Map from "./modals/Map";
+
 const Standups = () => {
   const standups = useSelector((state) => state.data.standups);
   const searchTerm = useSelector((state) => state.data.searchTerm);
   const [currentPage, setCurrentPage] = useState(0);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [mapIsOpen, setMapIsOpen] = useState(false);
+  const [event, setEvent] = useState({});
   const itemsPerPage = 15;
   const handlePageClick = (selected) => {
     setCurrentPage(selected.selected);
@@ -20,6 +26,21 @@ const Standups = () => {
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const handleEvent = (event) => {
+    setEvent(event);
+  };
+  const openMap = () => {
+    setMapIsOpen(true);
+  };
+  const closeMap = () => {
+    setMapIsOpen(false);
+  };
   return (
     <>
       {searchTerm ? (
@@ -43,15 +64,21 @@ const Standups = () => {
                     src={standup.image}
                   />
 
-                  <div className="flex justify-center w-full text-center">
+                  <div
+                    onClick={() => {
+                      openMap();
+                      handleEvent(standup);
+                    }}
+                    className="flex justify-center w-full text-center hover:text-red-400 cursor-pointer"
+                  >
                     <h1 className="w-56 truncate font-bold text-xl ">
                       {standup.artist}
                     </h1>
                   </div>
                   <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                     <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
-                    <p className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg">
-                      {standup.location}
+                    <p className="w-56 truncate mr-4 text-gray-500 text-lg">
+                      {standup.locationName}
                     </p>
                   </div>
                   <div className="mt-3">
@@ -62,14 +89,30 @@ const Standups = () => {
                       Saat : {standup.time}
                     </p>
                   </div>
-                  <button className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300">
+                  <button
+                    onClick={() => {
+                      openModal();
+                      handleEvent(standup);
+                    }}
+                    className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300"
+                  >
                     Bilet al
                     <AiOutlineShoppingCart className="text-blue-600" />
                   </button>
+                  <Map
+                    mapIsOpen={mapIsOpen}
+                    closeMap={closeMap}
+                    event={event}
+                  />
                 </motion.div>
               );
             })}
           </div>
+          <Ticket
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+            event={event}
+          />
           <ReactPaginate
             className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
             previousLabel={"Önceki"}

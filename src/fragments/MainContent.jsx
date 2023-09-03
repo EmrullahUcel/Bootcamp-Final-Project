@@ -7,12 +7,16 @@ import cartVariants from "/src/components/variants/cartVariants.js";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
 import SearchedEvents from "./SearchedEvents";
-
+import Ticket from "./modals/Ticket";
+import Map from "./modals/Map";
 const MainContent = () => {
   const searchTerm = useSelector((state) => state.data.searchTerm);
 
   const all = useSelector(allData);
   const [currentPage, setCurrentPage] = useState(9);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [mapIsOpen, setMapIsOpen] = useState(false);
+  const [event, setEvent] = useState({});
   const itemsPerPage = 15;
   const handlePageClick = (selected) => {
     setCurrentPage(selected.selected);
@@ -22,17 +26,31 @@ const MainContent = () => {
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
-
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const handleEvent = (item) => {
+    setEvent(item);
+  };
+  const openMap = () => {
+    setMapIsOpen(true);
+  };
+  const closeMap = () => {
+    setMapIsOpen(false);
+  };
   return (
     <>
       {searchTerm ? (
         <SearchedEvents />
       ) : (
         <AnimatePresence>
-          <div className="w-full mt-14 flex flex-wrap gap-12 justify-center px-16 bg-[#f1f1f177] ">
+          <div className="w-full mt-36 flex flex-wrap gap-12 justify-center px-16 bg-[#f1f1f177] ">
             {currentItems.map((item, index) => {
               return (
-                <div key={item.id}>
+                <div key={index}>
                   <motion.div
                     initial="initial"
                     animate="animate"
@@ -46,15 +64,21 @@ const MainContent = () => {
                       src={item.image}
                     />
 
-                    <div className="flex justify-center w-full text-center">
-                      <h1 className="w-56 truncate font-bold text-xl ">
+                    <div
+                      onClick={() => {
+                        openMap();
+                        handleEvent(item);
+                      }}
+                      className="flex justify-center w-full text-center"
+                    >
+                      <h1 className="w-56 truncate font-bold text-xl hover:text-red-400 cursor-pointer">
                         {item.artist}
                       </h1>
                     </div>
                     <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                       <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
-                      <p className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg">
-                        {item.location}
+                      <p className="w-56 truncate mr-4 text-gray-500 text-lg">
+                        {item.locationName}
                       </p>
                     </div>
                     <div className="mt-3">
@@ -65,15 +89,31 @@ const MainContent = () => {
                         Saat : {item.time}
                       </p>
                     </div>
-                    <button className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300">
+                    <button
+                      onClick={() => {
+                        openModal();
+                        handleEvent(item);
+                      }}
+                      className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300"
+                    >
                       Bilet al
                       <AiOutlineShoppingCart className="text-blue-600" />
                     </button>
                   </motion.div>
+                  <Map
+                    mapIsOpen={mapIsOpen}
+                    closeMap={closeMap}
+                    event={event}
+                  />
                 </div>
               );
             })}
           </div>
+          <Ticket
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+            event={event}
+          />
           <ReactPaginate
             className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
             previousLabel={"Önceki"}

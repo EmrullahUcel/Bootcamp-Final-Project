@@ -7,7 +7,7 @@ const initialState = {
   standups: [],
   searchTerm: "",
   searhedItems: [],
-  ticket: [],
+  tickets: [],
 };
 
 export const dataSlice = createSlice({
@@ -33,14 +33,13 @@ export const dataSlice = createSlice({
       state.searhedItems = action.payload;
     },
     setTicket: (state, action) => {
-      state.ticket = [...state.ticket, action.payload];
-      console.log(state.ticket);
+      state.tickets = [...state.tickets, action.payload];
     },
     deleteTicket: (state, action) => {
-      const selectedTicket = state.ticket.filter(
-        (x) => x.id !== action.payload.id
+      const selectedTicket = state.tickets.filter(
+        (x) => x.seat !== action.payload.seat
       );
-      state.ticket = selectedTicket;
+      state.tickets = selectedTicket;
     },
   },
 });
@@ -53,6 +52,6 @@ export const {
   setSearchTerm,
   setSearhedItems,
   setTicket,
-  deleteTicket
+  deleteTicket,
 } = dataSlice.actions;
 export default dataSlice.reducer;

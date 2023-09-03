@@ -17,6 +17,7 @@ import Theaters from "./fragments/Theaters";
 import Standups from "./fragments/Standups";
 import FavEvents from "./fragments/FavEvents";
 import MainContent from "./fragments/MainContent";
+import Basket from "./fragments/Basket";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
           <Route path="/theaters" element={<Theaters />} />
           <Route path="/festivals" element={<Festivals />} />
           <Route path="/standups" element={<Standups />} />
+          <Route path="/basket" element={<Basket />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

@@ -46,9 +46,12 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#3DCE88] flex justify-center items-center w-full h-44 relative">
-      <NavLink to="/" className="w-32 mt-[-90px]">
-        ETKİNLİKLER.COM
-      </NavLink>
+      <div className="w-full flex justify-evenly items-center">
+        <NavLink to="/" className="">
+          ETKİNLİKLER.COM
+        </NavLink>
+        <NavLink to="/basket" >BİLETLERİM</NavLink>
+      </div>
       <div className="w-full flex justify-around items-end absolute mb-[-7rem] ">
         <input
           className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 font-semibold "
@@ -64,7 +67,7 @@ const Navbar = () => {
       </div>
       <div className="w-full  mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-25rem]  ">
         <NavLink
-          className="w-40 h-20  hover:border-green-600 border-4 border-white flex
+          className="w-40 h-20   hover:border-blue-600 border-4 border-green-600 flex
            justify-center items-center rounded-lg bg-white text-black "
           to="/concerts"
         >
@@ -73,7 +76,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/festivals"
-          className="w-40 h-20 hover:border-green-600 border-4 border-white flex
+          className="w-40 h-20 hover:border-blue-600 border-4 border-green-600 flex
            justify-center items-center rounded-lg bg-white text-black "
         >
           <MdOutlineFestival className="text-green-500 mr-2 text-2xl" />
@@ -81,7 +84,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/theaters"
-          className="w-40 h-20 hover:border-green-600 border-4 border-white flex
+          className="w-40 h-20 hover:border-blue-600 border-4 border-green-600 flex
            justify-center items-center rounded-lg bg-white text-black "
         >
           <FaTheaterMasks className="text-green-500 mr-2 text-2xl" />
@@ -89,7 +92,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/standups"
-          className="w-40 h-20 hover:border-green-600 border-4 border-white flex 
+          className="w-40 h-20 hover:border-blue-600 border-4 border-green-600 flex 
           justify-center items-center rounded-lg bg-white text-black "
         >
           <FaLaughBeam className="text-green-500 mr-2 text-2xl" />
