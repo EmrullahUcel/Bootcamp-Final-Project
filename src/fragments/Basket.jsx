@@ -9,7 +9,6 @@ const Basket = () => {
   return (
     <div className="w-full mt-36 flex flex-wrap gap-12 justify-center px-16 bg-[#f1f1f177]">
       {tickets.map((ticket) => {
-        console.log(ticket);
         return (
           <div className="w-full" key={ticket.id}>
             <p>Etkinlik : {ticket.artist ? ticket.artist : ticket.title} </p>

@@ -33,13 +33,37 @@ export const dataSlice = createSlice({
       state.searhedItems = action.payload;
     },
     setTicket: (state, action) => {
-      state.tickets = [...state.tickets, action.payload];
+      const existingTicket = state.tickets.find(
+        (ticket) => ticket.id === action.payload.id
+      );
+      if (existingTicket) {
+        if (existingTicket.seat.includes(action.payload.seat)) {
+          return;
+        }
+        const updatedSeat = `${existingTicket.seat}-${action.payload.seat}`;
+        const updatedPrice = existingTicket.price + action.payload.price;
+        state.tickets = state.tickets.map((ticket) =>
+          ticket.id === action.payload.id
+            ? {
+                ...action.payload,
+                seat: updatedSeat,
+                price: updatedPrice,
+              }
+            : ticket
+        );
+      } else {
+        state.tickets = [...state.tickets, action.payload];
+      }
     },
+
     deleteTicket: (state, action) => {
       const selectedTicket = state.tickets.filter(
-        (x) => x.seat !== action.payload.seat
+        (x) => x.id !== action.payload.id
       );
       state.tickets = selectedTicket;
+    },
+    emptyBasket: (state, action) => {
+      state.tickets = [];
     },
   },
 });
@@ -53,5 +77,6 @@ export const {
   setSearhedItems,
   setTicket,
   deleteTicket,
+  emptyBasket,
 } = dataSlice.actions;
 export default dataSlice.reducer;
