@@ -47,20 +47,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-400 text-white flex justify-center items-center w-full h-44 relative">
+    <nav className="bg-blue-600 text-white flex justify-center items-center w-full h-44 relative">
       <div className="w-full flex justify-evenly h-full mt-10 items-start">
         <NavLink to="/" className="items-center flex ">
           <BiSolidMicrophoneAlt className="text-4xl" />
-          ÜÇŞEHİRETKİNLİK
+          <h1 className="font-extrabold font">ÜÇŞEHİRETKİNLİK</h1>
         </NavLink>
         <NavLink className="flex w-auto h-auto items-center" to="/basket">
-          BİLETLERİM
+          <h1 className="font-extrabold font">BİLETLERİM</h1>
           <TiTicket className="text-4xl" />
         </NavLink>
       </div>
       <div className="w-full flex justify-around items-end absolute mb-[-7rem] ">
         <input
-          className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 text-blue-900 font-semibold "
+          className="w-[35rem] rounded-s-full rounded-e-full h-16 pl-6 text-blue-900 font-semibold "
           onChange={handleSearch}
           type="search"
           placeholder="Etkinlik , sanatçı ya da mekan ara ..."

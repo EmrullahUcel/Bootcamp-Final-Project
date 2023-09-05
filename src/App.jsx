@@ -52,6 +52,7 @@ function App() {
           <Route path="/festivals" element={<Festivals />} />
           <Route path="/standups" element={<Standups />} />
           <Route path="/basket" element={<Basket />} />
+          
         </Routes>
         <Footer/>
       </motion.div>

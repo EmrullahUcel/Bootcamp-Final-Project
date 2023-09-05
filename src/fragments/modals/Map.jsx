@@ -11,7 +11,7 @@ function Map({ mapIsOpen, closeMap, event }) {
       onRequestClose={closeMap}
       className="w-[38rem] h-[28rem] flex justify-center items-center mx-auto my-auto top-[50%] border left-[50%] sm:w-80 sm:h-96 overflow-auto sm:bg-white"
     >
-      <div className="relative sm:w-54">
+      <div className="relative sm:w-54 ">
         <button className="absolute right-0" onClick={closeMap}>
           <IoIosCloseCircleOutline />
         </button>

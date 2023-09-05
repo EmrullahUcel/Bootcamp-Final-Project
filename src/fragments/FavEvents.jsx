@@ -15,9 +15,7 @@ const FavEvents = () => {
 
     return () => clearInterval(interval);
   }, []);
-  const handleClick = (favorite) => {
-    alert(favorite.artist ? favorite.artist : favorite.title);
-  };
+  
 
   return (
     <AnimatePresence>

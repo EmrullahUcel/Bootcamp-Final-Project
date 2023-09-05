@@ -62,9 +62,9 @@ const SearchedEvents = () => {
                   Saat : {event.time}
                 </p>
               </div>
-              <button className="absolute bottom-0 mb-3 flex justify-around items-center w-full rounded-3xl bg-gray-300">
+              <button className="absolute bottom-0 mb-3 flex justify-center gap-3 items-center w-full rounded-3xl bg-blue-600 text-white">
                 Bilet al
-                <AiOutlineShoppingCart className="text-blue-600" />
+                <AiOutlineShoppingCart className="text-white" />
               </button>
               <Map mapIsOpen={mapIsOpen} closeMap={closeMap} event={event} />
             </motion.div>
