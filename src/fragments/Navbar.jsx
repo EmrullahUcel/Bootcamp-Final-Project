@@ -27,8 +27,7 @@ const Navbar = () => {
         event.city.toLowerCase().includes(normalizedSearchValue) ||
         event.artist?.toLowerCase().includes(normalizedSearchValue) ||
         event.location.toLowerCase().includes(normalizedSearchValue) ||
-        event.title?.toLowerCase().includes(normalizedSearchValue) ||
-        event.date.toLowerCase().includes(normalizedSearchValue)
+        event.title?.toLowerCase().includes(normalizedSearchValue)
       );
     });
 
@@ -51,16 +50,16 @@ const Navbar = () => {
       <div className="w-full flex justify-evenly h-full mt-10 items-start">
         <NavLink to="/" className="items-center flex ">
           <BiSolidMicrophoneAlt className="text-4xl" />
-          <h1 className="font-extrabold font">ÜÇŞEHİRETKİNLİK</h1>
+          <h1 className="font-extrabold font sm:text-xs">ÜÇŞEHİRETKİNLİK</h1>
         </NavLink>
         <NavLink className="flex w-auto h-auto items-center" to="/basket">
-          <h1 className="font-extrabold font">BİLETLERİM</h1>
-          <TiTicket className="text-4xl" />
+          <h1 className="font-extrabold font sm:text-xs">BİLETLERİM</h1>
+          <TiTicket className="text-4xl " />
         </NavLink>
       </div>
       <div className="w-full flex justify-around items-end absolute mb-[-5rem] ">
         <input
-          className="w-[35rem] rounded-s-full rounded-e-full h-16 pl-6 text-blue-900 font-semibold "
+          className="w-[30rem] rounded-s-full rounded-e-full h-16 pl-6 text-blue-900 font-semibold sm:w-[50%]"
           onChange={handleSearch}
           type="search"
           placeholder="Etkinlik , sanatçı ya da mekan ara ..."
@@ -71,7 +70,7 @@ const Navbar = () => {
           onChange={handleDate}
         />
       </div>
-      <div className="w-full mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-26rem] sm:flex sm:flex-wrap sm:text-sm sm:h-40 sm:gap-1 sm:pt-16 ">
+      <div className="w-full mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-26rem] sm:flex sm:flex-wrap sm:text-sm sm:h-40 sm:gap-5 sm:pt-16 ">
         <NavLink
           className="w-40 h-20   hover:border-blue-600 border-4 border-green-600 flex
            justify-center items-center rounded-lg bg-white text-black sm:w-24 sm:h-12"

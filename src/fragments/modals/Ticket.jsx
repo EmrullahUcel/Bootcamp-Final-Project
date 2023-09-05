@@ -93,7 +93,7 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
         </button>
       </div>
       <div>
-      <ul className="text-black w-full flex flex-col justify-center items-center">
+        <ul className="text-black w-full flex flex-col justify-center items-center">
           <li>Fiyatlar</li>
           <li>1-10 : 500₺</li>
           <li>11-20 : 400₺</li>
@@ -123,23 +123,22 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
             );
           })}
         </div>
-        <div className="w-full flex h-auto justify-center items-center overflow-auto  bg-blue-600 text-white">
+        <div className="w-full flex h-auto justify-center items-center overflow-auto bg-blue-600 text-white">
           <div className="w-full flex flex-col justify-center items-center h-20 ">
             <button
-              className="border-white border mt-1 rounded-xl p-1"
+              className="border-white bg-white text-blue-600 border mt-1 rounded-xl p-1"
               onClick={handleConfirm}
             >
               Bileti Onayla
             </button>
             <button
-              className="border-white border mt-1 rounded-xl p-1"
+              className="border-white bg-red-600 border mt-1 rounded-xl p-1"
               onClick={handleClean}
             >
-              seçimleri kaldır
+              Seçimleri temizle
             </button>
           </div>
         </div>
-       
       </div>
     </Modal>
   );

@@ -64,20 +64,20 @@ const Festivals = () => {
                     src={festival.image}
                   />
 
-                  <div
-                    onClick={() => {
-                      openMap();
-                      handleEvent(festival);
-                    }}
-                    className="flex justify-center w-full text-center"
-                  >
+                  <div className="flex justify-center w-full text-center">
                     <h1 className="w-56 truncate font-bold text-xl hover:text-red-400 cursor-pointer">
                       {festival.artist}
                     </h1>
                   </div>
                   <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                     <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
-                    <p className="w-56 truncate mr-4 text-gray-500  text-lg">
+                    <p
+                      onClick={() => {
+                        openMap();
+                        handleEvent(festival);
+                      }}
+                      className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg"
+                    >
                       {festival.locationName}
                     </p>
                   </div>
@@ -94,7 +94,7 @@ const Festivals = () => {
                       openModal();
                       handleEvent(festival);
                     }}
-                    className="absolute bottom-0 mb-3 flex justify-center gap-3 items-center w-full rounded-3xl bg-blue-600 text-white" 
+                    className="absolute bottom-0 mb-3 flex justify-center gap-3 items-center w-full rounded-3xl bg-blue-600 text-white"
                   >
                     Bilet al
                     <AiOutlineShoppingCart className="text-white" />
@@ -104,23 +104,23 @@ const Festivals = () => {
                     closeMap={closeMap}
                     event={event}
                   />
+                  <Ticket
+                    modalIsOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    event={event}
+                  />
                 </motion.div>
               );
             })}
+            <ReactPaginate
+              className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
+              previousLabel={"Önceki"}
+              nextLabel={"Sonraki"}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              activeClassName={"active2"}
+            />
           </div>
-          <Ticket
-            modalIsOpen={modalIsOpen}
-            closeModal={closeModal}
-            event={event}
-          />
-          <ReactPaginate
-            className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
-            previousLabel={"Önceki"}
-            nextLabel={"Sonraki"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            activeClassName={"active2"}
-          />
         </AnimatePresence>
       )}
     </>

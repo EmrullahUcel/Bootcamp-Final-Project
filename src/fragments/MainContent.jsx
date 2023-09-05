@@ -48,9 +48,9 @@ const MainContent = () => {
       ) : (
         <AnimatePresence>
           <div className="w-full mt-36 flex flex-wrap gap-12 justify-center px-16 bg-[#f1f1f177] ">
-            {currentItems.map((item, index) => {
+            {currentItems.map((item) => {
               return (
-                <div key={index}>
+                <div key={item.id}>
                   <motion.div
                     initial="initial"
                     animate="animate"
@@ -64,20 +64,20 @@ const MainContent = () => {
                       src={item.image}
                     />
 
-                    <div
-                      onClick={() => {
-                        openMap();
-                        handleEvent(item);
-                      }}
-                      className="flex justify-center w-full text-center"
-                    >
+                    <div className="flex justify-center w-full text-center">
                       <h1 className="w-56 truncate font-bold text-xl hover:text-red-400 cursor-pointer">
                         {item.artist}
                       </h1>
                     </div>
                     <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                       <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
-                      <p className="w-56 truncate mr-4 text-gray-500 text-lg">
+                      <p
+                        onClick={() => {
+                          openMap();
+                          handleEvent(item);
+                        }}
+                        className="w-56 truncate mr-4 cursor-pointer text-gray-500 text-lg"
+                      >
                         {item.locationName}
                       </p>
                     </div>
@@ -94,7 +94,7 @@ const MainContent = () => {
                         openModal();
                         handleEvent(item);
                       }}
-                      className="absolute bottom-0 mb-3 flex justify-center gap-3 items-center w-full rounded-3xl bg-blue-600 text-white" 
+                      className="absolute bottom-0 mb-3 flex justify-center gap-3 items-center w-full rounded-3xl bg-blue-600 text-white"
                     >
                       Bilet al
                       <AiOutlineShoppingCart className="text-white" />
@@ -105,23 +105,23 @@ const MainContent = () => {
                     closeMap={closeMap}
                     event={event}
                   />
+                  <Ticket
+                    modalIsOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    event={event}
+                  />
                 </div>
               );
             })}
+            <ReactPaginate
+              className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
+              previousLabel={"Önceki"}
+              nextLabel={"Sonraki"}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              activeClassName={"active2"}
+            />
           </div>
-          <Ticket
-            modalIsOpen={modalIsOpen}
-            closeModal={closeModal}
-            event={event}
-          />
-          <ReactPaginate
-            className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
-            previousLabel={"Önceki"}
-            nextLabel={"Sonraki"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            activeClassName={"active2"}
-          />
         </AnimatePresence>
       )}
     </>

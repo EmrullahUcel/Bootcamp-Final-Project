@@ -7,7 +7,11 @@ export default {
       md: "450px",
       lg: "1024px",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "not-found": "url('/public/notFoundBg.jpg') ",
+      },
+    },
   },
   plugins: [],
 };

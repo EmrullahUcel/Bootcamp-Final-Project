@@ -37,20 +37,20 @@ const SearchedEvents = () => {
                 src={event.image ? event.image : theaterNoImage}
               />
 
-              <div
-                onClick={() => {
-                  openMap();
-                  handleEvent(event);
-                }}
-                className="flex justify-center w-full text-center"
-              >
+              <div className="flex justify-center w-full text-center">
                 <h1 className="w-56 truncate font-bold text-xl hover:text-red-500 cursor-pointer ">
                   {event.artist}
                 </h1>
               </div>
               <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                 <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
-                <p className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg">
+                <p
+                  onClick={() => {
+                    openMap();
+                    handleEvent(event);
+                  }}
+                  className="w-56 truncate cursor-pointer mr-4 text-gray-500 text-lg"
+                >
                   {event.locationName}
                 </p>
               </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { AnimatePresence, motion } from "framer-motion";
 
 import axios from "axios";
 import {
@@ -19,6 +18,7 @@ import FavEvents from "./fragments/FavEvents";
 import MainContent from "./fragments/MainContent";
 import Basket from "./fragments/Basket";
 import Footer from "./fragments/Footer";
+import NotFound from "./fragments/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,22 +41,20 @@ function App() {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div className="w-full h-screen">
-        <Navbar />
-        <FavEvents />
-        <Routes>
-          <Route path="/concerts" element={<Concerts />} />
-          <Route path="/" element={<MainContent />} />
-          <Route path="/theaters" element={<Theaters />} />
-          <Route path="/festivals" element={<Festivals />} />
-          <Route path="/standups" element={<Standups />} />
-          <Route path="/basket" element={<Basket />} />
-          
-        </Routes>
-        <Footer/>
-      </motion.div>
-    </AnimatePresence>
+    <div className="w-full h-screen">
+      <Navbar />
+      <FavEvents />
+      <Routes>
+        <Route path="/concerts" element={<Concerts />} />
+        <Route path="/" element={<MainContent />} />
+        <Route path="/theaters" element={<Theaters />} />
+        <Route path="/festivals" element={<Festivals />} />
+        <Route path="/standups" element={<Standups />} />
+        <Route path="/basket" element={<Basket />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 

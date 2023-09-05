@@ -65,20 +65,20 @@ const Theaters = () => {
                     src={theater.image ? theater.image : theaterNoImage}
                   />
 
-                  <div
-                    onClick={() => {
-                      openMap();
-                      handleEvent(theater);
-                    }}
-                    className="flex justify-center w-full text-center hover:text-red-400 cursor-pointer"
-                  >
+                  <div className="flex justify-center w-full text-center hover:text-red-400 cursor-pointer">
                     <h1 className="w-56 truncate font-bold text-xl ">
                       {theater.title}
                     </h1>
                   </div>
                   <div className="flex leading-10 gap-1 justify-center items-center mt-3">
                     <CiLocationOn className="text-2xl text-blue-600 ml-3 " />
-                    <p className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg">
+                    <p
+                      onClick={() => {
+                        openMap();
+                        handleEvent(theater);
+                      }}
+                      className="w-56 truncate mr-4 text-gray-500 cursor-pointer text-lg"
+                    >
                       {theater.locationName}
                     </p>
                   </div>
@@ -105,23 +105,23 @@ const Theaters = () => {
                     closeMap={closeMap}
                     event={event}
                   />
+                  <Ticket
+                    modalIsOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    event={event}
+                  />
                 </motion.div>
               );
             })}
+            <ReactPaginate
+              className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
+              previousLabel={"Önceki"}
+              nextLabel={"Sonraki"}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              activeClassName={"active2"}
+            />
           </div>
-          <Ticket
-            modalIsOpen={modalIsOpen}
-            closeModal={closeModal}
-            event={event}
-          />
-          <ReactPaginate
-            className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
-            previousLabel={"Önceki"}
-            nextLabel={"Sonraki"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            activeClassName={"active2"}
-          />
         </AnimatePresence>
       )}
     </>
