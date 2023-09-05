@@ -7,8 +7,16 @@ const Basket = () => {
   const tickets = useSelector((state) => state.data.tickets);
   const dispatch = useDispatch();
 
+  if (tickets.length === 0) {
+    return (
+      <div className="w-full mt-36 flex justify-center items-center h-20">
+        <p>Henüz biletiniz bulunmamaktadır.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full mt-36 flex flex-wrap  justify-center gap-12 px-16 bg-[#f1f1f177] ">
+    <div className="w-full mt-36 flex flex-wrap justify-center gap-12 px-16 bg-[#f1f1f177] ">
       {tickets.map((ticket) => {
         return (
           <div
@@ -26,7 +34,7 @@ const Basket = () => {
             <div className="h-full flex flex-col justify-center items-center sm:mt-10 gap-5">
               <TiTicket className="text-5xl text-green-500" />
               <button
-                className="w-full border p-2 border-rwhite bg-white rounded-6xl text-red-500"
+                className="w-full border p-2 border-white bg-white rounded-6xl text-red-500"
                 onClick={() => {
                   dispatch(deleteTicket(ticket));
                 }}

@@ -16,9 +16,11 @@ body {
   align-items: center;
 }
 
-.body{
-  font-family: 'Ubuntu', sans-serif;
+.body {
+  font-family: "Ubuntu", sans-serif;
 }
-.active{
+.active {
+  transition: 1s;
   transform: scale(1.2);
+  border-color: #2563eb;
 }

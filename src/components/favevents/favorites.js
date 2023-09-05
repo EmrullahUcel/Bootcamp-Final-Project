@@ -3,7 +3,7 @@ const favorites = [
     id: 201,
     image: "https://wp.oggusto.com/wp-content/uploads/2023/08/cem-adrian.webp",
     artist: "Cem Adrian",
-    city: "istanbul",
+    city: "İstanbul",
     location: "Hayal Kahvesi Aqua Florya",
     date: "09/09/2023",
     time: "22:00",
@@ -16,7 +16,7 @@ const favorites = [
     image:
       "https://wp.oggusto.com/wp-content/uploads/2023/08/kenan-dogulu.webp",
     artist: "Kenan Doğulu",
-    city: "istanbul",
+    city: "İstanbul",
     location: "Turkcell Vadi",
     date: "10/09/2023",
     time: "21:00",
@@ -29,19 +29,19 @@ const favorites = [
     image:
       "https://wp.oggusto.com/wp-content/uploads/2023/08/ceylan-ertem.webp",
     artist: "Ceylan Ertem",
-    city: "istanbul",
-    location: "Jolly Joker Kıyı istanbul",
+    city: "İstanbul",
+    location: "Jolly Joker Kıyı İstanbul",
     date: "15/09/2023",
     time: "21:00",
     ticket: "Biletix",
-    description: "Ceylan Ertem, 15 Eylül’de Jolly Joker Kıyı istanbul’da.",
+    description: "Ceylan Ertem, 15 Eylül’de Jolly Joker Kıyı İstanbul’da.",
   },
   {
     id: 204,
     image:
       "https://tiyatrolar.com.tr/files/activity/o/othello-3/image/othello-3.jpg",
     title: "Othello",
-    city: "istanbul",
+    city: "İstanbul",
     location: "Kadıköy Belediyesi Süreyya Operası",
     date: "01/09/2023",
     time: "20:00",
@@ -64,25 +64,26 @@ const favorites = [
   },
   {
     id: 206,
-    image:
-      "https://wp.oggusto.com/wp-content/uploads/2023/08/istanbul-rooftop-festival-1024x576.webp",
-    artist: "istanbul Rooftop Festival",
-    city: "istanbul",
+    image:"https://festtr.com/wp-content/uploads/istanbulrooftopfestival-20.08.2021-23-23-43.jpg",
+    artist: "İstanbul Rooftop Festival",
+    city: "İstanbul",
     location: "Çeşitli Teraslar",
     date: "09/09/2023",
     ticket: "Passo",
-    description: "Çatı Üstü Festivali",
+    description:
+      "Bu sene altıncısı düzenlenecek olan ve bir Sonbahar klasiği haline gelen İstanbul Rooftop Festival, bu zamana kadar yaşadığı eşsiz deneyime bir yenisini eklemek için 18 Eylül Cumartesi günü şehrin en keyifli teraslarında sizlerle buluşmaya hazırlanıyor!",
   },
   {
     id: 207,
     image:
       "https://wp.oggusto.com/wp-content/uploads/2023/07/akbank-caz-festivali.webp",
     artist: "33. Akbank Caz Festivali",
-    city: "istanbul",
+    city: "İstanbul",
     location: "Çeşitli Mekanlar",
     date: "23/09/2023 - 08/10/2023",
     ticket: "Biletix",
-    description: "Caz Festivali",
+    description:
+      "Bu yıl 33'üncüsü gerçekleşecek olan Akbank Caz Festivali, 23 Eylül-8 Ekim tarihleri arasında caz dünyasının saygın isimlerini ağırlayacak.",
   },
   {
     id: 208,
@@ -94,7 +95,8 @@ const favorites = [
     date: "22/09/2023",
     time: "",
     ticket: "Biletix",
-    description: "Sertab Erener, Adamlar, Evdeki Saat, Kendimden Hallice",
+    description:
+      "Sertab Erener, Adamlar, Evdeki Saat, Kendimden Hallice . Alsancak Müzik Festivali 22 Eylülde İzmir Tarihi Havagazı Fabrikası’nda!",
   },
   {
     id: 209,
@@ -106,7 +108,8 @@ const favorites = [
     date: "30/09/2023",
     time: "",
     ticket: "Biletix",
-    description: "Tezgah, Haluk Levent",
+    description:
+      "Tezgah, Haluk Levent . İzmir’de bugüne kadar yapılmış en büyük yeme&içme ve eğlence festivali İzmir Gurmefest ikinci kez YİCEZ, İÇÇEZ, EĞLENCEZ teması ile düzenleniyor. ",
   },
   {
     id: 210,

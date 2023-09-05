@@ -11,32 +11,40 @@ const FavEvents = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === favorites.length - 1 ? 0 : prevIndex + 1
       );
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
-  
 
   return (
     <AnimatePresence>
-      <motion.div className="w-full h-72 overflow-hidden relative ">
+      <motion.div className="w-full h-72 overflow-hidden relative mt-5">
         <motion.div
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={{ duration: 0.8, transform: 3 }}
+          transition={{ duration: 0.9, transform: 3 }}
           variants={slideVariants}
           key={currentIndex}
           src={favorites[currentIndex].image}
           alt=""
-          className="w-full h-full "
-          onClick={() => handleClick(favorites[currentIndex])}
+          className="w-full h-full flex"
         >
           <motion.img
-            className="w-full h-full cursor-pointer"
+            className="w-[59%] h-full cursor-pointer rounded-e-3xl ml-[1%]"
             src={favorites[currentIndex].image}
             alt=""
           />
+          <motion.div className="w-[40%] flex flex-col justify-center items-center h-full p-5">
+            <motion.p className="font-semibold text-2xl text-blue-600">
+              {favorites[currentIndex].artist
+                ? favorites[currentIndex].artist
+                : favorites[currentIndex].title}
+            </motion.p>
+            <motion.p className="font-semibold">
+              {favorites[currentIndex].description}
+            </motion.p>
+          </motion.div>
         </motion.div>
       </motion.div>
     </AnimatePresence>

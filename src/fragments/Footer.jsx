@@ -5,9 +5,9 @@ import { AiFillMail } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col justify-center h-20 items-center gap-3  bg-white">
+    <div className="w-full flex flex-col justify-center h-20 items-center gap-3 bg-blue-100">
       <h2 className="font-bold">Bize Ulaşın</h2>
-      <div className="w-full flex justify-center h-12  gap-5 bg-white">
+      <div className="w-full flex justify-center h-12  gap-5 bg-blue-100">
         <NavLink>
           <FaTwitter className="text-blue-400 text-xl" />
         </NavLink>

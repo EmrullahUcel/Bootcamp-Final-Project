@@ -47,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-600 text-white flex justify-center items-center w-full h-44 relative">
+    <nav className="bg-blue-600 text-white rounded-b-3xl flex justify-center items-center w-full h-44 relative">
       <div className="w-full flex justify-evenly h-full mt-10 items-start">
         <NavLink to="/" className="items-center flex ">
           <BiSolidMicrophoneAlt className="text-4xl" />
@@ -58,7 +58,7 @@ const Navbar = () => {
           <TiTicket className="text-4xl" />
         </NavLink>
       </div>
-      <div className="w-full flex justify-around items-end absolute mb-[-7rem] ">
+      <div className="w-full flex justify-around items-end absolute mb-[-5rem] ">
         <input
           className="w-[35rem] rounded-s-full rounded-e-full h-16 pl-6 text-blue-900 font-semibold "
           onChange={handleSearch}
@@ -71,7 +71,7 @@ const Navbar = () => {
           onChange={handleDate}
         />
       </div>
-      <div className="w-full mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-25rem] sm:flex sm:flex-wrap sm:text-sm sm:h-40 sm:gap-1 sm:pt-16 ">
+      <div className="w-full mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-26rem] sm:flex sm:flex-wrap sm:text-sm sm:h-40 sm:gap-1 sm:pt-16 ">
         <NavLink
           className="w-40 h-20   hover:border-blue-600 border-4 border-green-600 flex
            justify-center items-center rounded-lg bg-white text-black sm:w-24 sm:h-12"
