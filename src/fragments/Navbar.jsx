@@ -5,6 +5,8 @@ import { PiMicrophoneStageFill } from "react-icons/pi";
 import { MdOutlineFestival } from "react-icons/md";
 import { FaTheaterMasks } from "react-icons/fa";
 import { FaLaughBeam } from "react-icons/fa";
+import { TiTicket } from "react-icons/ti";
+import { BiSolidMicrophoneAlt } from "react-icons/bi";
 
 const Navbar = () => {
   const concerts = useSelector((state) => state.data.concerts);
@@ -45,47 +47,51 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#3DCE88] flex justify-center items-center w-full h-44 relative">
-      <div className="w-full flex justify-evenly items-center">
-        <NavLink to="/" className="">
-          ETKİNLİKLER.COM
+    <nav className="bg-blue-400 text-white flex justify-center items-center w-full h-44 relative">
+      <div className="w-full flex justify-evenly h-full mt-10 items-start">
+        <NavLink to="/" className="items-center flex ">
+          <BiSolidMicrophoneAlt className="text-4xl" />
+          ÜÇŞEHİRETKİNLİK
         </NavLink>
-        <NavLink to="/basket" >BİLETLERİM</NavLink>
+        <NavLink className="flex w-auto h-auto items-center" to="/basket">
+          BİLETLERİM
+          <TiTicket className="text-4xl" />
+        </NavLink>
       </div>
       <div className="w-full flex justify-around items-end absolute mb-[-7rem] ">
         <input
           className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 font-semibold "
           onChange={handleSearch}
           type="search"
-          placeholder="Etkinlik , sanatçı , mekan ya da tarihe göre ara ..."
+          placeholder="Etkinlik , sanatçı ya da mekan ara ..."
         />
         <input
           type="date"
-          className="w-[18rem] h-16 rounded-s-full rounded-e-full p-5"
+          className="w-[18rem] h-16 rounded-s-full rounded-e-full text-black p-5 sm:w-[10rem]"
           onChange={handleDate}
         />
       </div>
-      <div className="w-full  mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-25rem]  ">
+      <div className="w-full mt-12 flex justify-center gap-14 items-center h-20 absolute bottom-[-25rem] sm:flex sm:flex-wrap sm:text-sm sm:h-40 sm:gap-1 sm:pt-16 ">
         <NavLink
           className="w-40 h-20   hover:border-blue-600 border-4 border-green-600 flex
-           justify-center items-center rounded-lg bg-white text-black "
+           justify-center items-center rounded-lg bg-white text-black sm:w-24 sm:h-12"
           to="/concerts"
         >
-          <PiMicrophoneStageFill className="text-green-500 mr-2 text-2xl" />
+          <PiMicrophoneStageFill className="text-green-500 mr-2 text-2xl " />
           KONSER
         </NavLink>
         <NavLink
           to="/festivals"
           className="w-40 h-20 hover:border-blue-600 border-4 border-green-600 flex
-           justify-center items-center rounded-lg bg-white text-black "
+           justify-center items-center rounded-lg bg-white text-black sm:w-24 sm:h-12"
         >
-          <MdOutlineFestival className="text-green-500 mr-2 text-2xl" />
+          <MdOutlineFestival className="text-green-500 mr-2 text-2xl " />
           FESTİVAL
         </NavLink>
         <NavLink
           to="/theaters"
           className="w-40 h-20 hover:border-blue-600 border-4 border-green-600 flex
-           justify-center items-center rounded-lg bg-white text-black "
+           justify-center items-center rounded-lg bg-white text-black sm:w-24 sm:h-12"
         >
           <FaTheaterMasks className="text-green-500 mr-2 text-2xl" />
           TİYATRO
@@ -93,9 +99,9 @@ const Navbar = () => {
         <NavLink
           to="/standups"
           className="w-40 h-20 hover:border-blue-600 border-4 border-green-600 flex 
-          justify-center items-center rounded-lg bg-white text-black "
+          justify-center items-center rounded-lg bg-white text-black sm:w-24 sm:h-12"
         >
-          <FaLaughBeam className="text-green-500 mr-2 text-2xl" />
+          <FaLaughBeam className="text-green-500 mr-2 text-2xl " />
           STAND-UP
         </NavLink>
       </div>

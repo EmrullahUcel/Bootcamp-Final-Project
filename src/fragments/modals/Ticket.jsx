@@ -4,18 +4,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { emptyBasket, setTicket } from "/src/features/DataSlice";
 import { useDispatch } from "react-redux";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    width: "40rem",
-    height: "30rem",
-  },
-};
+
 
 const Ticket = ({ modalIsOpen, closeModal, event }) => {
   const seats = [];
@@ -60,7 +49,7 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
     } else {
       setSelectedSeats((prevSelectedSeats) => [
         ...prevSelectedSeats,
-        { seat: seat.seat, eventId: eventId , price : seat.price },
+        { seat: seat.seat, eventId: eventId, price: seat.price },
       ]);
     }
   };
@@ -98,10 +87,11 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={customStyles}
+      className="w-[38rem] h-[30rem] mx-auto my-auto top-[50%] left-[50%] bg-white sm:w-80 sm:h-96 overflow-auto sm:bg-white"
+      
     >
       <div>
-        <button className="absolute right-5 top-5" onClick={closeModal}>
+        <button className="sticky " onClick={closeModal}>
           <IoIosCloseCircleOutline />
         </button>
       </div>

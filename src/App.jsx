@@ -18,6 +18,7 @@ import Standups from "./fragments/Standups";
 import FavEvents from "./fragments/FavEvents";
 import MainContent from "./fragments/MainContent";
 import Basket from "./fragments/Basket";
+import Footer from "./fragments/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ function App() {
           <Route path="/standups" element={<Standups />} />
           <Route path="/basket" element={<Basket />} />
         </Routes>
+        <Footer/>
       </motion.div>
     </AnimatePresence>
   );
