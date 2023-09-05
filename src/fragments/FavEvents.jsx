@@ -31,7 +31,7 @@ const FavEvents = () => {
           className="w-full h-full flex"
         >
           <motion.img
-            className="w-[59%] h-full cursor-pointer rounded-e-3xl ml-[1%]"
+            className="w-[59%] h-full cursor-pointer rounded-3xl ml-[1%]"
             src={favorites[currentIndex].image}
             alt=""
           />
@@ -41,7 +41,7 @@ const FavEvents = () => {
                 ? favorites[currentIndex].artist
                 : favorites[currentIndex].title}
             </motion.p>
-            <motion.p className="font-semibold">
+            <motion.p className="font-semibold truncate">
               {favorites[currentIndex].description}
             </motion.p>
           </motion.div>
