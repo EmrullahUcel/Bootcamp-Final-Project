@@ -18,6 +18,7 @@ const FavEvents = () => {
   const handleClick = (favorite) => {
     alert(favorite.artist ? favorite.artist : favorite.title);
   };
+
   return (
     <AnimatePresence>
       <motion.div className="w-full h-72 overflow-hidden relative ">

@@ -60,7 +60,7 @@ const Navbar = () => {
       </div>
       <div className="w-full flex justify-around items-end absolute mb-[-7rem] ">
         <input
-          className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 font-semibold "
+          className="w-[60rem] rounded-s-full rounded-e-full h-16 pl-6 text-blue-900 font-semibold "
           onChange={handleSearch}
           type="search"
           placeholder="Etkinlik , sanatçı ya da mekan ara ..."

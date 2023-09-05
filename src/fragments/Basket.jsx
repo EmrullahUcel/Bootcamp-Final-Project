@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTicket } from "/src/features/DataSlice";
+import { deleteTicket, emptyBasket } from "/src/features/DataSlice";
 import { TiTicket } from "react-icons/ti";
 
 const Basket = () => {
@@ -27,7 +27,9 @@ const Basket = () => {
               <TiTicket className="text-5xl text-green-500" />
               <button
                 className="w-full border p-2 border-rwhite bg-white rounded-6xl text-red-500"
-                onClick={() => dispatch(deleteTicket(ticket))}
+                onClick={() => {
+                  dispatch(deleteTicket(ticket));
+                }}
               >
                 Bileti iptal et
               </button>
