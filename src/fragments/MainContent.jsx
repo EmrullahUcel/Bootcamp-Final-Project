@@ -113,14 +113,16 @@ const MainContent = () => {
                 </div>
               );
             })}
-            <ReactPaginate
-              className="w-full h-16 gap-5 mt-32 items-center flex justify-center bg-blue-500 text-white"
-              previousLabel={"Önceki"}
-              nextLabel={"Sonraki"}
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              activeClassName={"active2"}
-            />
+           <div>
+              <ReactPaginate
+                className="w-screen h-16 gap-5 mt-32 items-center flex justify-center sm:gap-3 bg-blue-500 text-white"
+                previousLabel={"Önceki"}
+                nextLabel={"Sonraki"}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                activeClassName={"active2"}
+              />
+            </div>
           </div>
         </AnimatePresence>
       )}
