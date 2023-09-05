@@ -35,13 +35,13 @@ const FavEvents = () => {
             src={favorites[currentIndex].image}
             alt=""
           />
-          <motion.div className="w-[40%] flex flex-col justify-center items-center h-full p-5">
-            <motion.p className="font-semibold text-2xl text-blue-600">
+          <motion.div className="w-[40%] flex flex-col items-center h-full  p-5">
+            <motion.p className="font-semibold text-2xl  text-blue-600">
               {favorites[currentIndex].artist
                 ? favorites[currentIndex].artist
                 : favorites[currentIndex].title}
             </motion.p>
-            <motion.p className="font-semibold truncate">
+            <motion.p className="font-semibold w-full overflow-auto h-[10rem] ">
               {favorites[currentIndex].description}
             </motion.p>
           </motion.div>
