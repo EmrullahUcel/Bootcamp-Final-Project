@@ -85,58 +85,59 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      className="w-[38rem] h-[30rem] mx-auto my-auto top-[50%] left-[50%] bg-white sm:w-80 sm:h-96 overflow-auto sm:bg-white"
+      className="w-[55%] h-[30rem] mx-auto my-auto top-[50%] left-[50%] bg-white sm:w-80 sm:h-96 overflow-auto sm:bg-white"
     >
-      <div>
-        <button className="sticky " onClick={closeModal}>
+      <div className="relative">
+        <button className="absolute right-3 top-3 " onClick={closeModal}>
           <IoIosCloseCircleOutline />
         </button>
-      </div>
-      <div>
-        <ul className="text-black w-full flex flex-col justify-center items-center">
-          <li>Fiyatlar</li>
-          <li>1-10 : 500₺</li>
-          <li>11-20 : 400₺</li>
-          <li>21-30 : 300₺</li>
-          <li>31-50 : 200₺</li>
-        </ul>
-        <div className="w-full bg-red-300 h-12 flex items-center justify-center">
-          <h1 className="text-white">SAHNE</h1>
-        </div>
-        <div className="w-full flex justify-center items-center h-6 bg-blue-600 text-white">
-          <h1>Koltuk Seçimi</h1>
-        </div>
-        <div className="flex flex-wrap justify-center items-center">
-          {seats.map((seat) => {
-            const isSelected = isSeatSelected(seat);
-            return (
+
+        <div>
+          <ul className="text-black w-full flex flex-col justify-center items-center">
+            <li>Fiyatlar</li>
+            <li>1-10 : 500₺</li>
+            <li>11-20 : 400₺</li>
+            <li>21-30 : 300₺</li>
+            <li>31-50 : 200₺</li>
+          </ul>
+          <div className="w-full bg-red-300 h-12 flex items-center justify-center">
+            <h1 className="text-white">SAHNE</h1>
+          </div>
+          <div className="w-full flex justify-center items-center h-6 bg-blue-600 text-white">
+            <h1>Koltuk Seçimi</h1>
+          </div>
+          <div className="flex flex-wrap justify-center items-center">
+            {seats.map((seat) => {
+              const isSelected = isSeatSelected(seat);
+              return (
+                <button
+                  className={`border-blue-300 w-12 h-12 m-1 border ${
+                    isSelected ? "bg-green-500" : ""
+                  }`}
+                  onClick={() => handleSeatClick(seat)}
+                  key={seat.seat}
+                  disabled={isSelected}
+                >
+                  {seat.seat}
+                </button>
+              );
+            })}
+          </div>
+          <div className="w-full flex h-auto justify-center items-center overflow-auto bg-blue-600 text-white">
+            <div className="w-full flex flex-col justify-center items-center h-20 ">
               <button
-                className={`border-blue-300 w-12 h-12 m-1 border ${
-                  isSelected ? "bg-green-500" : ""
-                }`}
-                onClick={() => handleSeatClick(seat)}
-                key={seat.seat}
-                disabled={isSelected}
+                className="border-white bg-white text-blue-600 border mt-1 rounded-xl p-1"
+                onClick={handleConfirm}
               >
-                {seat.seat}
+                Bileti Onayla
               </button>
-            );
-          })}
-        </div>
-        <div className="w-full flex h-auto justify-center items-center overflow-auto bg-blue-600 text-white">
-          <div className="w-full flex flex-col justify-center items-center h-20 ">
-            <button
-              className="border-white bg-white text-blue-600 border mt-1 rounded-xl p-1"
-              onClick={handleConfirm}
-            >
-              Bileti Onayla
-            </button>
-            <button
-              className="border-white bg-red-600 border mt-1 rounded-xl p-1"
-              onClick={handleClean}
-            >
-              Seçimleri temizle
-            </button>
+              <button
+                className="border-white bg-red-600 border mt-1 rounded-xl p-1"
+                onClick={handleClean}
+              >
+                Seçimleri temizle
+              </button>
+            </div>
           </div>
         </div>
       </div>

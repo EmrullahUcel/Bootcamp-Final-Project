@@ -102,33 +102,23 @@ const Concerts = () => {
                       Bilet al
                       <AiOutlineShoppingCart className="text-white" />
                     </button>
-                    <Map
-                      mapIsOpen={mapIsOpen}
-                      closeMap={closeMap}
-                      event={event}
-                    />
-                    <Ticket
-                      modalIsOpen={modalIsOpen}
-                      closeModal={closeModal}
-                      event={event}
-                    />
                   </motion.div>
                 </div>
               );
             })}
-            <div>
-              <ReactPaginate
-                className="w-screen h-16 gap-5 mt-32 items-center flex justify-center sm:gap-3 bg-blue-500 text-white"
-                previousLabel={"Önceki"}
-                nextLabel={"Sonraki"}
-                pageCount={pageCount}
-                onPageChange={handlePageClick}
-                activeClassName={"active2"}
-              />
-            </div>
           </div>
         </AnimatePresence>
       )}
+      <ReactPaginate
+        className="w-full h-16 gap-5 mt-32 items-center flex justify-center sm:gap-3 bg-blue-500 text-white"
+        previousLabel={"Önceki"}
+        nextLabel={"Sonraki"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        activeClassName={"active2"}
+      />
+      <Map mapIsOpen={mapIsOpen} closeMap={closeMap} event={event} />
+      <Ticket modalIsOpen={modalIsOpen} closeModal={closeModal} event={event} />
     </>
   );
 };

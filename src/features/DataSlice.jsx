@@ -8,6 +8,7 @@ const initialState = {
   searchTerm: "",
   searhedItems: [],
   tickets: [],
+  
 };
 
 export const dataSlice = createSlice({
