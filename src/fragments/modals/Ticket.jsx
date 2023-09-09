@@ -85,7 +85,7 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      className="w-[55%] h-[30rem] mx-auto my-auto top-[50%] left-[50%] bg-white sm:w-80 sm:h-96 overflow-auto sm:bg-white"
+      className="fixed top-1/2 left-1/2 bg-white transform -translate-x-1/2 -translate-y-1/2 overflow-auto w-[38rem] sm:w-[18rem] h-[30rem]"
     >
       <div className="relative">
         <button className="absolute right-3 top-3 " onClick={closeModal}>
@@ -111,7 +111,7 @@ const Ticket = ({ modalIsOpen, closeModal, event }) => {
               const isSelected = isSeatSelected(seat);
               return (
                 <button
-                  className={`border-blue-300 w-12 h-12 m-1 border ${
+                  className={`border-blue-300 w-12 h-12 m-1 border rounded-t-3xl ${
                     isSelected ? "bg-green-500" : ""
                   }`}
                   onClick={() => handleSeatClick(seat)}
